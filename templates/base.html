@@ -1,0 +1,35 @@
+{% load static %}
+
+{% comment %} sidebar kiri base utama {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Klinik</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Klinik Sehat</h2>
+            </div>
+            <ul class="menu">
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                
+                <li><a href="{% url 'pasien' %}">Pasien</a></li>
+
+                <li><a href="{% url 'dokter' %}">Dokter</a></li>
+
+                <li><a href="{% url 'obat' %}">Obat</a></li>
+
+                <li><a href="{% url 'laporan' %}">Laporan</a></li>
+                
+                <li><a href="{% url 'settings' %}">Settings</a></li>
+            </ul>
+        </nav>
+        {% block content %}{% endblock %}
+</body>

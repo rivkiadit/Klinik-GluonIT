@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}   
+<html>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokter</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</head>
+<body>
+        {% block content %}
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1>Dashboard Klinik</h1>
+                <div class="header-right">
+                    <a href="#" class="btn-logout">Logout</a>
+                </div>
+            </header>
+            <div class="container mt-5">
+                <h2>Dokter List</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Dokter</th>
+                            <th>Spesialis Dokter</th>
+                            <th>Alamat Dokter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in persons %}
+                        <tr>
+                            <td>{{ person.id_dokter }}</td>
+                            <td>{{ person.nama_dokter }}</td>
+                            <td>{{ person.dokter_spesialis }}</td>
+                            <td>{{ person.alamat_dokter }}</td> 
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- Cards Section -->
+            <form method="post" action="{% url 'pasien' %}">
+                {% csrf_token %}
+                <button type="submit">Dokter</button>
+            </form>            
+        </div>
+        {% endblock %}
+    </div>
+</body>
+</html> 

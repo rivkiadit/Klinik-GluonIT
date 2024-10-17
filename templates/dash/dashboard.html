@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} 
+{% block content %}
+    <h1> Hello, world!</h1>
+    <table>
+    <tr><th>Name</th><th>Score</td></tr>
+    {% for score in scores %}
+        <tr>
+            <td>{{ score.name }}</td>
+            <td>{{ score.value }}</td>
+        </tr>
+{% endfor %}
+    </table>
+    <form>
+        {{ form }}
+    </form>
+    <a href="{% url 'about' %}">About page</a>
+{% endblock %} {% endcomment %}
+    
+{% comment %} ini adalah menu sisi kanan {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Klinik</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</head>
+<body>
+    {% comment %} <div class="dashboard-wrapper"> {% endcomment %}
+        <!-- Sidebar -->
+        {% comment %} <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Klinik Sehat</h2>
+            </div>
+            <ul class="menu">
+                <li><a href="#" class="active">Dashboard</a></li>
+                
+                <li><a href="{% url 'pasien' %}">Pasien</a></li>
+
+                <li><a href="{% url 'dokter' %}">Dokter</a></li>
+
+                <li><a href="{% url 'obat' %}">Obat</a></li>
+
+                <li><a href="{% url 'laporan' %}">Laporan</a></li>
+                
+                <li><a href="{% url 'settings' %}">Settings</a></li>
+            </ul>
+        </nav> {% endcomment %}
+
+        <!-- Main Content -->
+        {% block content %}
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1>Dashboard Klinik</h1>
+                <div class="header-right">
+                    <a href="#" class="btn-logout">Logout</a>
+                </div>
+            </header>
+
+            <!-- Cards Section -->
+            <section class="stats-cards">
+                <div class="card">
+                    <h3>Total Pasien</h3>
+                    <p>250</p>
+                </div>
+                <div class="card">
+                    <h3>Pasien Hari Ini</h3>
+                    <p>35</p>
+                </div>
+                <div class="card">
+                    <h3>Jumlah Dokter</h3>
+                    <p>12</p>
+                </div>
+                <div class="card">
+                    <h3>Laporan Bulanan</h3>
+                    <p>Lihat Report</p>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts">
+                <div class="chart">
+                    <h2>Pasien Datang Hari ini</h2>
+                    <!-- Placeholder for chart -->
+                    <p>20</p>
+                </div>
+                <div class="chart">
+                    <h2>Obat Terjual Hari Ini</h2>
+                    <!-- Placeholder for chart -->
+                    <p>190</p>
+                </div>
+            </section>
+        </div>
+        {% endblock %}
+    </div>
+</body>
+</html>
